@@ -1,0 +1,150 @@
+/* Estilos generales */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffdde1, #ff99c8);
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    perspective: 1000px;
+}
+
+button {
+    background-color: #ff4d6d;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+button:hover {
+    background-color: #ff1e4a;
+    transform: scale(1.1);
+}
+
+/* Diseño de la tarjeta */
+.card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 0.8s ease-in-out;
+}
+
+.front, .inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.front {
+    background-color: #ff85a2;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heart-icon {
+    font-size: 50px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.tap-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.inside {
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+.card.open {
+    transform: rotateY(180deg);
+}
+
+.love-message {
+    font-size: 20px;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.poem {
+    font-style: italic;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Animación de latido */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* Animación de corazones flotantes */
+@keyframes floatingHearts {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 30px;
+    color: red;
+    animation: floatingHearts 5s linear forwards;
+    pointer-events: none;
+}
+
+/* Animación de tulipanes más grandes */
+@keyframes floatingTulips {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.tulip {
+    position: fixed;
+    bottom: 0;
+    font-size: 120px; /* Aumentado mucho más */
+    animation: floatingTulips 3s ease-in-out forwards;
+    pointer-events: none;
+}
